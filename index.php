@@ -1,5 +1,6 @@
 <?php
 require_once __DIR__ . '/movie.php';
+require_once __DIR__ . '/media.php';
 require_once __DIR__ . '/db.php';
 
 
@@ -21,6 +22,7 @@ require_once __DIR__ . '/db.php';
    
   
     <div class="card m-3 " style="width: 18rem;">
+    <img src="img/<?php  echo $movie->image->file_name ?>" class="card-img-top" alt="">
       <div class="card-body">
         <h5 class="card-title"> <?php echo $movie->title?></h5>
         <h6 class="card-subtitle mb-2 text-body-secondary"><?php echo implode(",", $movie->type) ?></h6>
