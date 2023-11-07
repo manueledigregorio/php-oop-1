@@ -19,34 +19,37 @@ require_once __DIR__ . '/db/db.php';
   <title>Movie</title>
 </head>
 <body>
-  <div class="container d-flex flex-wrap">
-    <?php foreach ($products as $product) {?>
-   
-    <div class="card m-3 " style="width: 18rem;">
-    <img src="img/<?php  echo $product->image->file_name ?>" class="card-img-top" alt="">
-      <div class="card-body">
-        <h5 class="card-title"> <?php echo $product->title?></h5>
-        <h6 class="card-subtitle mb-2 text-body-secondary"><?php echo implode(",", $product->type) ?></h6>
-        <p class="card-text"><?php echo implode(",", $product->actors) ?></p>
-        <?php if (get_class($product) == 'Movie'){ ?>
-           <p>Anno: <?php echo  $product->published_year?> </p>
-           <p><?php echo  $product->running_time?> min</p>
+  <div class="container ">
+    <div class="row">
+      <?php foreach ($products as $product) {?>
+        <div class="col-4">
+          <div class="card m-3 " style="width: 18rem;">
+              <img src="img/<?php  echo $product->image->file_name ?>" class="card-img-top" alt="">
+              <div class="card-body">
+                <h5 class="card-title"> <?php echo $product->title?></h5>
+                <h6 class="card-subtitle mb-2 text-body-secondary"><?php echo implode(",", $product->type) ?></h6>
+                <p class="card-text"><?php echo implode(",", $product->actors) ?></p>
+                <?php if (get_class($product) == 'Movie'){ ?>
+                  <p>Anno: <?php echo  $product->published_year?> </p>
+                  <p><?php echo  $product->running_time?> min</p>
 
-           
-        <?php } ?>
-        <?php if (get_class($product) == 'TvSerie'){ ?>
-           <p>Anno primo episodio:<?php echo  $product->aired_from_year?> </p>
-           <p>Ultimo episodio:<?php echo  $product->aired_to_year?> </p>
-           <p>Numero episodi:<?php echo  $product->number_of_episodes?> </p>
-           <p> Numero stagioni:<?php echo  $product->number_of_seasons?> </p>
-           
-        <?php } ?>
-        
-       
-
-      </div>
+                  
+                <?php } ?>
+                <?php if (get_class($product) == 'TvSerie'){ ?>
+                  <p>Anno primo episodio:<?php echo  $product->aired_from_year?> </p>
+                  <p>Ultimo episodio:<?php echo  $product->aired_to_year?> </p>
+                  <p>Numero episodi:<?php echo  $product->number_of_episodes?> </p>
+                  <p> Numero stagioni:<?php echo  $product->number_of_seasons?> </p>
+                  
+                <?php } ?>
+                
+              </div>
+            </div>
+        </div>
+      
+      <?php } ?>
     </div>
-    <?php } ?>
+    
   </div>
 </body>
 </html>
