@@ -1,7 +1,7 @@
 <?php
-require_once __DIR__ . '/movie.php';
-require_once __DIR__ . '/media.php';
-require_once __DIR__ . '/db.php';
+require_once __DIR__ . '/models/media.php';
+require_once __DIR__ . '/models/product.php';
+require_once __DIR__ . '/db/db.php';
 
 
 ?>
@@ -17,17 +17,16 @@ require_once __DIR__ . '/db.php';
   <title>Movie</title>
 </head>
 <body>
-  <div class="container d-flex ">
-    <?php foreach ($movies as $movie) {?>
+  <div class="container d-flex flex-wrap">
+    <?php foreach ($products as $product) {?>
    
-  
     <div class="card m-3 " style="width: 18rem;">
-    <img src="img/<?php  echo $movie->image->file_name ?>" class="card-img-top" alt="">
+    <img src="img/<?php  echo $product->image->file_name ?>" class="card-img-top" alt="">
       <div class="card-body">
-        <h5 class="card-title"> <?php echo $movie->title?></h5>
-        <h6 class="card-subtitle mb-2 text-body-secondary"><?php echo implode(",", $movie->type) ?></h6>
-        <p class="card-text"><?php echo implode(",", $movie->actors) ?></p>
-        <p><?php echo $movie->minutes?> minute</p>
+        <h5 class="card-title"> <?php echo $product->title?></h5>
+        <h6 class="card-subtitle mb-2 text-body-secondary"><?php echo implode(",", $product->type) ?></h6>
+        <p class="card-text"><?php echo implode(",", $product->actors) ?></p>
+        <p><?php echo $product->minutes?> minute</p>
       </div>
     </div>
     <?php } ?>
