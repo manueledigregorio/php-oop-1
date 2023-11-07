@@ -1,6 +1,8 @@
 <?php
-require_once __DIR__ . '/models/media.php';
-require_once __DIR__ . '/models/product.php';
+require_once __DIR__ . '/models/Media.php';
+require_once __DIR__ . '/models/Product.php';
+require_once __DIR__ . '/models/Movie.php';
+require_once __DIR__ . '/models/TvSerie.php';
 require_once __DIR__ . '/db/db.php';
 
 
@@ -26,7 +28,22 @@ require_once __DIR__ . '/db/db.php';
         <h5 class="card-title"> <?php echo $product->title?></h5>
         <h6 class="card-subtitle mb-2 text-body-secondary"><?php echo implode(",", $product->type) ?></h6>
         <p class="card-text"><?php echo implode(",", $product->actors) ?></p>
-        <p><?php echo $product->minutes?> minute</p>
+        <?php if (get_class($product) == 'Movie'){ ?>
+           <p>Anno: <?php echo  $product->published_year?> </p>
+           <p><?php echo  $product->running_time?> min</p>
+
+           
+        <?php } ?>
+        <?php if (get_class($product) == 'TvSerie'){ ?>
+           <p>Anno primo episodio:<?php echo  $product->aired_from_year?> </p>
+           <p>Ultimo episodio:<?php echo  $product->aired_to_year?> </p>
+           <p>Numero episodi:<?php echo  $product->number_of_episodes?> </p>
+           <p> Numero stagioni:<?php echo  $product->number_of_seasons?> </p>
+           
+        <?php } ?>
+        
+       
+
       </div>
     </div>
     <?php } ?>
