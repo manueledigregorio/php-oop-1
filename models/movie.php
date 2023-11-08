@@ -1,6 +1,6 @@
 <?php
  class Movie extends product{
-  public $published_year;
+  use Data;
   public $running_time;
 
   public function __construct( int $_published_year, int $_running_year, string $_title, array $_type, array $_actors, Media $_image){

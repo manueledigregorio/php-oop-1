@@ -1,9 +1,16 @@
 <?php
-require_once __DIR__ . '/models/Media.php';
-require_once __DIR__ . '/models/Product.php';
-require_once __DIR__ . '/models/Movie.php';
-require_once __DIR__ . '/models/TvSerie.php';
-require_once __DIR__ . '/db/db.php';
+try{
+  require_once __DIR__ . '/Traint/data.php';
+  require_once __DIR__ . '/models/Media.php';
+  require_once __DIR__ . '/models/Product.php';
+  require_once __DIR__ . '/models/Movie.php';
+  require_once __DIR__ . '/models/TvSerie.php';
+  require_once __DIR__ . '/db/db.php';
+
+}catch(Exception $e){
+
+  $error = $e->getMessage();
+} 
 
 
 ?>
@@ -36,7 +43,7 @@ require_once __DIR__ . '/db/db.php';
                   
                 <?php } ?>
                 <?php if (get_class($product) == 'TvSerie'){ ?>
-                  <p>Anno primo episodio:<?php echo  $product->aired_from_year?> </p>
+                  <p>Anno primo episodio:<?php echo  $product->published_year?> </p>
                   <p>Ultimo episodio:<?php echo  $product->aired_to_year?> </p>
                   <p>Numero episodi:<?php echo  $product->number_of_episodes?> </p>
                   <p> Numero stagioni:<?php echo  $product->number_of_seasons?> </p>
