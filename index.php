@@ -27,7 +27,12 @@ try{
 </head>
 <body>
   <div class="container ">
-    <div class="row">
+    <?php if(isset($error)){?>
+     <div class="alert alert-danger" role="alert"><?php echo $error?></div> 
+
+    <?php } else{ ?>
+
+      <div class="row">
       <?php foreach ($products as $product) {?>
         <div class="col-4">
           <div class="card m-3 " style="width: 18rem;">
@@ -56,6 +61,9 @@ try{
       
       <?php } ?>
     </div>
+
+    <?php } ?>
+    
     
   </div>
 </body>
